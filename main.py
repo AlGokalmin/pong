@@ -19,7 +19,7 @@ r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 
 # Setting the ball
-ball = Ball((0, 0))
+ball = Ball((-400, -300))
 
 # Moving the paddles
 screen.listen()
@@ -35,5 +35,9 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     ball.move()
+
+    # Detect collisions with wall
+    if ball.ycor() > HEIGHT / 2 - 10 or ball.ycor() < - HEIGHT / 2 + 10:
+        ball.bounce()
 
 screen.exitonclick()
